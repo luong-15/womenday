@@ -103,7 +103,7 @@
 
 <body>
     <div id="letterForm" class="flex items-center justify-center min-h-screen bg-background">
-        <button id="showButton" class="showbutton">
+        <button id="showButton" class="showbutton animate-shake">
             <img src="https://png.pngtree.com/png-clipart/20230919/ourmid/pngtree-pink-love-letters-png-image_10140862.png">
             <p class="text-lg text-muted-foreground" style="color: palevioletred;">
             <div class="flex items-center justify-center bg-background">
@@ -160,18 +160,6 @@
             color: palevioletred;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
         .animate-fade-in {
             animation: fadeIn 1s ease-out forwards;
         }
@@ -191,7 +179,41 @@
             color: #f00;
             animation: fall 5s linear infinite;
         }
+        
+        #showButton {
+            position: absolute;
+            height: 250px;
+            width: 250px;
+            transform: translate(-50%, -50%);
+            background-color: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: opacity 0.5s ease-in-out;
+            animation: shake-rotate 1s ease-in-out infinite;
+        }
+        
+        .showbutton img {
+            transform: scale(1.5);
+        }
 
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
         @keyframes fall {
             0% {
                 transform: translateY(-100%);
@@ -208,27 +230,19 @@
             }
         }
 
-        #showButton {
-            position: absolute;
-            height: 250px;
-            width: 250px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: none;
-            color: white;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: opacity 0.5s ease-in-out;
-        }
-
-        .showbutton img {
-            transform: scale(1.5);
+        @keyframes shake-rotate {
+            0% {
+                transform: rotateZ(0deg);
+            }
+            25% {
+                transform: rotateZ(-5deg) translateX(-2px);
+            }
+            75% {
+                transform: rotateZ(5deg) translateX(2px);
+            }
+            100% {
+                transform: rotateZ(0deg);
+            }
         }
     </style>
 </body>
